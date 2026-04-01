@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeatMap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <h1>HeatMap</h1>
+                <p class="current-date" id="currentDate"></p>
+            </div>
+            <button class="btn-primary" id="addHabitBtn">+ Add Habit</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Summary Cards -->
+        <section class="summary-section" id="summarySection">
+            <div class="summary-card">
+                <div class="summary-label">Total Habits</div>
+                <div class="summary-value" id="totalHabits">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Completed Today</div>
+                <div class="summary-value" id="completedToday">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Best Current Streak</div>
+                <div class="summary-value" id="bestStreak">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">30-Day Completion</div>
+                <div class="summary-value" id="completionRate">0%</div>
+            </div>
+        </section>
+
+        <!-- Habits List -->
+        <section class="habits-section" id="habitsSection">
+            <!-- Habit cards will be rendered here -->
+        </section>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h2>No habits yet</h2>
+            <p>Create your first habit to start tracking your progress!</p>
+            <button class="btn-primary" id="addHabitBtnEmpty">+ Add Your First Habit</button>
+        </div>
+    </main>
+
+    <!-- Add/Edit Habit Modal -->
+    <div class="modal" id="habitModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Habit</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="habitForm">
+                    <div class="form-group">
+                        <label for="habitName">Habit Name</label>
+                        <input 
+                            type="text" 
+                            id="habitName" 
+                            placeholder="e.g., Workout, Read, Meditate" 
+                            required 
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="habitColor">Color</label>
+                        <div class="color-picker">
+                            <div class="color-palette" id="colorPalette"></div>
+                            <input type="color" id="habitColor" value="#22c55e">
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary" id="submitBtn">Add Habit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="confirmModal" style="display: none;">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Delete Habit?</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this habit? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelDeleteBtn">Cancel</button>
+                    <button type="button" class="btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
